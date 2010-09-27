@@ -13,8 +13,6 @@ namespace Ops;
 
 /**
  * The class represents a security domain, where we perform some actions.
- * Every piece of code that is interested in authorization, should obtain
- * at least one domain object.
  *
  * @author Tomasz Jędrzejewski
  * @copyright Invenzzia Group <http://www.invenzzia.org/> and contributors.
@@ -35,55 +33,35 @@ class Domain
 	private $_name;
 
 	/**
-	 * The policy manager authentication key.
-	 * @var string
-	 */
-	private $_key;
-
-	/**
-	 * Creates the domain object. The constructor should not be called manually.
-	 * You are obliged to use the policy manager object instead.
+	 * Creates the domain object.
 	 *
 	 * @param string $name The domain name.
-	 * @param string $authKey The private authentication key of the policy manager.
 	 */
-	public function __construct($name, $authKey)
+	public function __construct($name)
 	{
 		$this->_name = $name;
-		$this->_key = $authKey;
 	} // end __construct();
 
 	/**
-	 * Assigns a policy to the domain. This method requires specifying
-	 * the authentication key in order to be executed, so only the policy
-	 * manager which created this object, can actually call it.
+	 * Assigns a policy to the domain.
 	 *
 	 * @throws \Ops\Exception
-	 * @param string $key The authentication key
 	 * @param Policy $policy The new domain policy
 	 */
-	final public function setPolicy($key, Policy $policy)
+	final public function setPolicy(Policy $policy)
 	{
-		if($this->_key !== $key)
-		{
-			throw new Exception('Cannot set the policy for domain '.$this->_name.': permission denied.');
-		}
 		$this->_policy = $policy;
 	} // end setPolicy();
 
 	/**
-	 * Returns the name of the current domain policy.
+	 * Returns the current security policy.
 	 *
 	 * @return string
 	 */
-	final public function getPolicyName()
+	final public function getPolicy()
 	{
-		if($this->_policy === null)
-		{
-			return null;
-		}
-		return $this->_policy->getName();
-	} // end getPolicyName();
+		return $this->_policy;
+	} // end getPolicy();
 
 	/**
 	 * Returns the domain name.

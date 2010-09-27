@@ -33,7 +33,7 @@ class Policy
 	 *
 	 * @param string $name The policy name.
 	 */
-	final public function __construct($name)
+	public function __construct($name)
 	{
 		$this->_name = $name;
 	} // end __construct();
@@ -43,20 +43,10 @@ class Policy
 	 *
 	 * @return string
 	 */
-	final public function getName()
+	public function getName()
 	{
 		return $this->_name;
 	} // end getName();
-
-	/**
-	 * Allows to initialize the policy with the specified arguments.
-	 *
-	 * @param array $args The list of policy arguments.
-	 */
-	public function initialize(array $args)
-	{
-		/* null */
-	} // end initialize();
 
 	/**
 	 * Processes a security event. The default implementation redirects the

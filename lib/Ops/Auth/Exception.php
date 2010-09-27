@@ -21,5 +21,8 @@ use \Ops\Exception as Ops_Exception;
  */
 class Exception extends Ops_Exception
 {
+	const AUTH_REQUIRED = 0;
+	const GUEST_REQUIRED = 1;
+
 	/* null */
 } // end Exception;
