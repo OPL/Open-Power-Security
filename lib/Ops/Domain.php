@@ -10,6 +10,7 @@
  * and other contributors. See website for details.
  */
 namespace Ops;
+use \Ops\Policy\Exception as Policy_Exception;
 
 /**
  * The class represents a security domain, where we perform some actions.
