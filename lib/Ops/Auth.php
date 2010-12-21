@@ -82,6 +82,7 @@ class Auth
 		if(!$this->_identityLoaded)
 		{
 			$this->_identity = $this->getStorage()->read();
+			$this->_identityLoaded = true;
 		}
 
 		return $this->_identity;
@@ -92,6 +93,7 @@ class Auth
 		if(!$this->_identityLoaded)
 		{
 			$this->_identity = $this->getStorage()->read();
+			$this->_identityLoaded = true;
 		}
 
 		return $this->_identity !== null;
